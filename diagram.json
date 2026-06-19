@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "author": "Arduino Helper",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -382.5,
+      "left": 72.7,
+      "attrs": { "distance": "14" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": -176.4, "left": 455, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 10,
+      "left": 460,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-buzzer", "id": "buzzer1", "top": 69.6, "left": 645, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -270,
+      "left": -380,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -172.5,
+      "left": -600.6,
+      "attrs": { "temperature": "25", "humidity": "60" }
+    }
+  ],
+  "connections": [
+    [ "uno:5V", "ultrasonic1:VCC", "red", [] ],
+    [ "uno:GND.1", "ultrasonic1:GND", "black", [] ],
+    [ "uno:9", "ultrasonic1:TRIG", "green", [] ],
+    [ "uno:10", "ultrasonic1:ECHO", "yellow", [] ],
+    [ "uno:13", "led1:A", "green", [] ],
+    [ "led1:C", "r1:1", "black", [] ],
+    [ "r1:2", "uno:GND.2", "black", [] ],
+    [ "uno:8", "buzzer1:2", "green", [] ],
+    [ "buzzer1:1", "uno:GND.3", "black", [] ],
+    [ "uno:5V", "lcd1:VCC", "red", [] ],
+    [ "uno:GND.1", "lcd1:GND", "black", [] ],
+    [ "uno:A4", "lcd1:SDA", "green", [] ],
+    [ "uno:A5", "lcd1:SCL", "blue", [] ],
+    [ "uno:5V", "dht1:VCC", "red", [] ],
+    [ "uno:GND.2", "dht1:GND", "black", [] ],
+    [ "uno:7", "dht1:SDA", "yellow", [] ]
+  ],
+  "dependencies": {}
+}
